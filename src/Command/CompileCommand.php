@@ -3,6 +3,7 @@ declare(strict_types=1);
 /**
  * @copyright 2017 Hostnet B.V.
  */
+
 namespace Hostnet\Bundle\AssetBundle\Command;
 
 use Hostnet\Component\Resolver\Bundler\PipelineBundler;
@@ -41,6 +42,12 @@ final class CompileCommand extends Command
         $reader = new FileReader($this->config->getProjectRoot());
         $writer = new FileWriter($this->config->getProjectRoot());
 
+        $output->writeln('<info>[CompileCommand] Starting</info>');
+
         $this->bundler->execute($reader, $writer);
+
+        if ($output->isVerbose()) {
+            $output->writeln('<info>[CompileCommand] Done</info>');
+        }
     }
 }

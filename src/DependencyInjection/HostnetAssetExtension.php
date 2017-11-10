@@ -161,6 +161,7 @@ final class HostnetAssetExtension extends Extension
         $compile = (new Definition(CompileCommand::class, [
             new Reference('hostnet_asset.bundler'),
             new Reference('hostnet_asset.config'),
+            new Reference('logger'),
         ]))
             ->addTag('console.command')
             ->setPublic(false);
